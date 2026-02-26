@@ -1,0 +1,68 @@
+<!-- Desktop; someone else make mobile! -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <!-- Assumign we'll put ::before css for image-->
+             <p>EECU</p>
+        </nav>
+    </header>
+
+    <h1>Budget Calculator</h1>
+    
+    <section>
+        <p>Gross Annual Income:</p>
+        <input type="text" id="gross-annual-income">
+    </section>
+
+    <section>
+        <h2>Category 1: Education</h2>
+        <div class="blue-background">
+            <ul>
+                <li>
+                    <!--Assuming emoji will be a ::before css image-->
+                    <p>Monthly Tuition</p>
+                    <input type="text" id="monthly-tuition-input">
+                    <img id="monthly-tuition-info">
+                </li>
+                <li>
+                    <!--Assuming emoji will be a ::before css image-->
+                    <p>Books & Supplies</p>
+                    <input type="text" id="books-and-supplies-input">
+                    <img id="monthly-tuition-info">
+                </li>
+                <li>
+                    <!--Assuming emoji will be a ::before css image-->
+                    <p>Dorm & Board</p>
+                    <input type="text" id="dorms-and-board-input">
+                    <img id="dorms-and-board-info">
+                </li>
+                <li>
+                    <!--Assuming emoji will be a ::before css image-->
+                    <p>Other Expenses</p>
+                    <input type="text" id="other-expenses-input">
+                    <img id="other-expenses-info">
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="chart-and-submit">
+        <!--Idk how we're gonna put in the pie chart, assuming it's a JS thing, dunno what element tho-->
+        <a href="Step2.html" type="submit">Continue</a>
+    </section>
+
+    <footer>
+        <p>Important note: Some expenses may not apply to you. If so, just mark the expense amount to $0. </p>
+    </footer>
+</body>
+</html>

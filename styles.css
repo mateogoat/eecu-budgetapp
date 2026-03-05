@@ -40,9 +40,19 @@ body > :not(header) {
     margin: 70px;
 }
 
-h1 {
+.heading {
+    display: flex;
 }
 
+#main-content {
+    display: grid;
+    grid-template: 1fr / 1fr 1fr;
+    gap: 50px;
+
+    width: 100%;
+}
+
+/* Career Input */
 #career-input-section {
     width: 440px;
     height: 55px;
@@ -73,7 +83,6 @@ h1 {
 #category-education {
     background: var(--primary-blue);
     color: white;
-    border: none;
     width: 600px;
     height: 500px;
     border-bottom-left-radius: 20px;
@@ -91,14 +100,23 @@ h1 {
         padding: 1rem;
         background-color: var(--secondary-grey);
     }
+
+    & ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        row-gap: 20px
+    }
 }
 
 li {
     list-style-type: none;
     display: flex;
-    flex-flow: row wrap;
     justify-self: center;
     align-content: center;
+    gap: 30px;
     & .spending-input {
         background: #d9d9d9;
         color: black;
@@ -108,20 +126,45 @@ li {
         border-radius: 10px;
         display: flex;
         flex-flow: row nowrap;
+
         & p {
             color: black;
-            &::before {
-                content: '🎓';
-                background-size: contain;
-                background-repeat: no-repeat;
-                width: 45px;
-                height: 45px;
-                display: inline-block;
-                margin-right: 10px;
-                font-size: 30px; /*Still needs to be formated*/
-            }
+            margin-left: 20px;
+            line-height: 17px;
+        }
+
+        & input {
+            margin-left: auto;
+            border-radius: 0 10px 10px 0;
+            border: 0px;
+            width: 100px;
+            text-align: center;
         }
     }
+}
+
+.page-5 {
+    display: flex;
+}
+
+/* Chart and Continue (Live Updating Chart) */
+#chart-and-submit {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.next {
+    background: var(--primary-blue);
+    color: white;
+    font-size: 35px;
+    
+
+    margin-top: 70px;
+    padding: 20px 70px;
+    border-radius: 20px;
+    border: 0;
 }
 
 button.back {
@@ -142,10 +185,4 @@ button.back {
         margin-left: 0.1rem;
         margin-right: -0.1rem;
     }
-}
-
-.heading {
-    display: flex;
-    align-items: center;
-    align-content: center;
 }

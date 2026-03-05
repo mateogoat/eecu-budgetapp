@@ -40,7 +40,7 @@ function navigate(page) {
         back.style.opacity = '1';
     }
     console.log(current_page);
-    if (5 === current_page) {
+        // See if there's a current chart and destroy if there is
         current_chart?.destroy();
         current_chart = new Chart(chart_container(), {
             type: 'doughnut',
@@ -60,7 +60,6 @@ function navigate(page) {
             }
         });
         console.log(current_chart);
-    }
 }
 
 navigate(0);

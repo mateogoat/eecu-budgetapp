@@ -20,6 +20,7 @@ class Category {
 const SPENDING = 1 << 1;
 const EARNING = 1 << 2;
 
+// 
 class Input {
     #flags = 0;
     get spending() {

@@ -2,239 +2,290 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
 
-        <link rel="stylesheet" href="styles.css" />
-        <script type="module" src="./script.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js@latest/dist/chart.umd.min.js"></script>
-    </head>
-    <body>
-        <header>
-            <nav>
-                <!-- Assumign we'll put ::before css for image-->
-                <p>EECU</p>
-            </nav>
-        </header>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
 
-        <section class="heading">
-            <button class="back"><b>&larr;</b></button>
-            <h1>Budget Calculator</h1>
-        </section>
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="./script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@latest/dist/chart.umd.min.js"></script>
+</head>
 
-        <section id="career-input-section">
-            <p>Career:</p>
-            <select name="career" id="career-input">
-                <!--Should be a dropdown menu to search for career (API)-->
-                <option value="default"></option>
-                <option value="accountant">Accountant</option>
-                <option value="architect">Architect</option>
-                <option value="doctor">Doctor</option>
-                <option value="engineer">Engineer</option>
-                <option value="web-developer">Web Developer</option>
-            </select>
-        </section>
+<body>
+    <header>
+        <nav>
+            <!-- Assumign we'll put ::before css for image-->
+            <p>EECU</p>
+        </nav>
+    </header>
 
-        <section id="category-education" class="inputs"></section>
-        <template class="page-0">
-            <h2>Category 1: Education</h2>
-            <div class="blue-background">
-                <ul>
-                    <li>
-                        <!--Assuming emoji will be a ::before css image-->
-                        <section class="spending-input">
-                            <p>Monthly Tuition</p>
-                            <input type="text" id="monthly-tuition-input" />
-                        </section>
-                        <img src="../images/info.svg" />
-                    </li>
-                    <li>
-                        <!--Assuming emoji will be a ::before css image-->
-                        <p>Books & Supplies</p>
-                        <input type="text" id="books-and-supplies-input" />
-                        <img src="../images/info.svg" />
-                    </li>
-                    <li>
-                        <!--Assuming emoji will be a ::before css image-->
-                        <p>Dorm & Board</p>
-                        <input type="text" id="dorms-and-board-input" />
-                        <img src="../images/info.svg" />
-                    </li>
-                    <li>
-                        <!--Assuming emoji will be a ::before css image-->
-                        <p>Other Expenses</p>
-                        <input type="text" id="other-expenses-input" />
-                        <img src="../images/info.svg" />
-                    </li>
-                </ul>
-            </div>
-        </template>
-        <template class="page-1">
-            <h2>Category 2: Housing</h2>
-            <div class="blue-background">
-                <ul>
-                    <li>
-                        <!--Assuming emoji will be a ::before css image-->
-                        <p>Rent Payment</p>
-                        <input type="text" id="rent-payment-input" />
-                        <img id="rent-payment-input" />
-                    </li>
-                    <li>
-                        <!--Assuming emoji will be a ::before css image-->
-                        <p>Utilities</p>
-                        <input type="text" id="utilities-input" />
-                        <img id="utilities-info" />
-                    </li>
-                    <li>
-                        <!--Assuming emoji will be a ::before css image-->
-                        <p>Renter's Insurance</p>
-                        <input type="text" id="renter-insurance-input" />
-                        <img id="renter-insurance-info" />
-                    </li>
-                    <li>
-                        <!--Assuming emoji will be a ::before css image-->
-                        <p>Other Expenses</p>
-                        <input type="text" id="other-expenses-input" />
-                        <img id="other-expenses-info" />
-                    </li>
-                </ul>
-            </div>
-        </template>
-        <template class="page-2">
-            <h2>Category 3: Essentials</h2>
-            <div class="blue-background">
-                <ul>
-                    <li>
-                        <!--Assuming emoji will be a ::before css image-->
-                        <p>Groceries</p>
-                        <input type="text" id="groceries-input" />
-                        <img id="groceries-info" />
-                    </li>
-                    <li>
-                        <!--Assuming emoji will be a ::before css image-->
-                        <p>Car Insurance</p>
-                        <input type="text" id="car-insurance-input" />
-                        <img id="utilities-info" />
-                    </li>
-                    <li>
-                        <!--Assuming emoji will be a ::before css image-->
-                        <p>Medical Insurance</p>
-                        <input type="text" id="medical-insurance-input" />
-                        <img id="renter-insurance-info" />
-                    </li>
-                    <li>
-                        <!--Assuming emoji will be a ::before css image-->
-                        <p>Clothing</p>
-                        <input type="text" id="clothing-input" />
-                        <img id="renter-insurance-info" />
-                    </li>
-                    <li>
-                        <!--Assuming emoji will be a ::before css image-->
-                        <p>Other Expenses</p>
-                        <input type="text" id="other-expenses-input" />
-                        <img id="other-expenses-info" />
-                    </li>
-                </ul>
-            </div>
-        </template>
-        <template class="page-3">
-            <h2>Category 4: Lifestyle</h2>
-            <div class="blue-background">
-                <ul>
-                    <li>
-                        <!--Assuming emoji will be a ::before css image-->
-                        <p>Dining Out</p>
-                        <input type="text" id="dining-out-input" />
-                        <img id="rent-payment-input" />
-                    </li>
-                    <li>
-                        <!--Assuming emoji will be a ::before css image-->
-                        <p>Streaming Services</p>
-                        <input type="text" id="streaming-services-input" />
-                        <img id="utilities-info" />
-                    </li>
-                    <li>
-                        <!--Assuming emoji will be a ::before css image-->
-                        <p>Gym Membership</p>
-                        <input type="text" id="gym-membership-input" />
-                        <img id="renter-insurance-info" />
-                    </li>
-                    <li>
-                        <!--Assuming emoji will be a ::before css image-->
-                        <p>Gaming</p>
-                        <input type="text" id="gaming-input" />
-                        <img id="renter-insurance-info" />
-                    </li>
-                    <li>
-                        <!--Assuming emoji will be a ::before css image-->
-                        <p>Other Expenses</p>
-                        <input type="text" id="other-expenses-input" />
-                        <img id="other-expenses-info" />
-                    </li>
-                </ul>
-            </div>
-        </template>
-        <template class="page-4">
-            <h2>Category 5: Future Proofing</h2>
-            <div class="blue-background">
-                <ul>
-                    <li>
-                        <!--Assuming emoji will be a ::before css image-->
-                        <p>401K & IRA</p>
-                        <input type="text" id="-401k-and-ira-input" />
-                        <img id="rent-payment-input" />
-                    </li>
-                    <li>
-                        <!--Assuming emoji will be a ::before css image-->
-                        <p>Investments</p>
-                        <input type="text" id="investments-input" />
-                        <img id="utilities-info" />
-                    </li>
-                    <li>
-                        <!--Assuming emoji will be a ::before css image-->
-                        <p>Savings</p>
-                        <input type="text" id="savings-input" />
-                        <img id="renter-insurance-info" />
-                    </li>
-                    <li>
-                        <!--Assuming emoji will be a ::before css image-->
-                        <p>Retirement Funds</p>
-                        <input type="text" id="retirement-input" />
-                        <img id="renter-insurance-info" />
-                    </li>
-                    <li>
-                        <!--Assuming emoji will be a ::before css image-->
-                        <p>Other Expenses</p>
-                        <input type="text" id="other-expenses-input" />
-                        <img id="other-expenses-info" />
-                    </li>
-                </ul>
-            </div>
-        </template>
-        <template class="page-5">
-            <section class="left"></section>
-            <section class="center">
-                <h2>Monthly Expenses</h2>
-                <div class="graph-container">
-                    <canvas class="graph"></canvas>
+    <section class="heading">
+        <button class="back"><b>&larr;</b></button>
+        <h1>Budget Calculator</h1>
+    </section>
+
+
+    <section id="career-input-section">
+        <p>Career:</p>
+        <select name="career" id="career-input">
+            <!--Should be a dropdown menu to search for career (API)-->
+            <option value="default"></option>
+            <option value="accountant">Accountant</option>
+            <option value="architect">Architect</option>
+            <option value="doctor">Doctor</option>
+            <option value="engineer">Engineer</option>
+            <option value="web-developer">Web Developer</option>
+        </select>
+    </section>
+
+    <section id="main-content">
+        <section id="category-education" class="inputs">
+            <template class="page-0">
+                <h2>Category 1: Education</h2>
+                <div class="blue-background">
+                    <ul>
+                        <li>
+                            <section class="spending-input">
+                                <p>Monthly Tuition</p>
+                                <input type="text" id="monthly-tuition-input" inputmode="numeric" value="0" />
+                            </section>
+                            <img src="../images/info.svg" />
+                        </li>
+                        <li>
+                            <section class="spending-input">
+                                <p>Books & Supplies</p>
+                                <input type="text" id="monthly-tuition-input" inputmode="numeric" value="0" />
+                            </section>
+                            <img src="../images/info.svg" />
+                        </li>
+                        <li>
+                            <section class="spending-input">
+                                <p>Dorm & Board</p>
+                                <input type="text" id="dorms-and-board-input" inputmode="numeric" />
+                            </section>
+
+                            <img src="../images/info.svg" />
+                        </li>
+                        <li>
+                            <section class="spending-input">
+                                <p>Other Expenses</p>
+                                <input type="text" id="other-expenses-input" inputmode="numeric" />
+                            </section>
+
+                            <img src="../images/info.svg" />
+                        </li>
+                    </ul>
                 </div>
-                <p class="summary"></p>
-                <button class="return">Return Home</button>
-            </section>
-            <section class="right"></section>
-        </template>
+            </template>
+            <template class="page-1">
+                <h2>Category 2: Housing</h2>
+                <div class="blue-background">
+                    <ul>
+                        <li>
+                            <section class="spending-input">
+                                <p>Rent Payment</p>
+                                <input type="text" id="rent-payment-input" inputmode="numeric" value="0" />
+                            </section>
+
+                            <img src="../images/info.svg" />
+                        </li>
+                        <li>
+                            <section class="spending-input">
+                                <p>Utilities</p>
+                                <input type="text" id="utilities-input" inputmode="numeric" />
+                            </section>
+
+                            <img src="../images/info.svg" />
+                        </li>
+                        <li>
+                            <section class="spending-input">
+                                <p>Renter's Insurance</p>
+                                <input type="text" id="renter-insurance-input" inputmode="numeric" />
+                            </section>
+
+                            <img src="../images/info.svg" />
+                        </li>
+                        <li>
+                            <section class="spending-input">
+                                <p>Other Expenses</p>
+                                <input type="text" id="other-expenses-input" inputmode="numeric" />
+                            </section>
+
+                            <img src="../images/info.svg" />
+                        </li>
+                    </ul>
+                </div>
+            </template>
+            <template class="page-2">
+                <h2>Category 3: Essentials</h2>
+                <div class="blue-background">
+                    <ul>
+                        <li>
+                            <section class="spending-input">
+                                <p>Groceries</p>
+                                <input type="text" id="groceries-input" inputmode="numeric" value="0" />
+                            </section>
+
+                            <img src="../images/info.svg" />
+                        </li>
+                        <li>
+                            <section class="spending-input">
+                                <p>Car Insurance</p>
+                                <input type="text" id="car-insurance-input" inputmode="numeric" />
+                            </section>
+
+                            <img src="../images/info.svg" />
+                        </li>
+                        <li>
+                            <section class="spending-input">
+                                <p>Medical Insurance</p>
+                                <input type="text" id="medical-insurance-input" inputmode="numeric" />
+                            </section>
+
+                            <img src="../images/info.svg" />
+                        </li>
+                        <li>
+                            <section class="spending-input">
+                                <p>Clothing</p>
+                                <input type="text" id="clothing-input" inputmode="numeric" />
+                            </section>
+
+                            <img src="../images/info.svg" />
+                        </li>
+                        <li>
+                            <section class="spending-input">
+                                <p>Other Expenses</p>
+                                <input type="text" id="other-expenses-input" inputmode="numeric" />
+                            </section>
+
+                            <img src="../images/info.svg" />
+                        </li>
+                    </ul>
+                </div>
+            </template>
+            <template class="page-3">
+                <h2>Category 4: Lifestyle</h2>
+                <div class="blue-background">
+                    <ul>
+                        <li>
+                            <section class="spending-input">
+                                <p>Dining Out</p>
+                                <input type="text" id="dining-out-input" inputmode="numeric" value="0" />
+                            </section>
+                            <img src="../images/info.svg" />
+                        </li>
+                        <li>
+                            <section class="spending-input">
+                                <p>Streaming Services</p>
+                                <input type="text" id="streaming-services-input" inputmode="numeric" />
+                            </section>
+
+                            <img src="../images/info.svg" />
+                        </li>
+                        <li>
+                            <section class="spending-input">
+
+                                <p>Gym Membership</p>
+                                <input type="text" id="gym-membership-input" inputmode="numeric" />
+                            </section>
+                            <img src="../images/info.svg" />
+                        </li>
+                        <li>
+                            <section class="spending-input">
+
+                                <p>Gaming</p>
+                                <input type="text" id="gaming-input" inputmode="numeric" />
+                            </section>
+                            <img src="../images/info.svg" />
+                        </li>
+                        <li>
+                            <section class="spending-input">
+
+                                <p>Other Expenses</p>
+                                <input type="text" id="other-expenses-input" inputmode="numeric" />
+                            </section>
+                            <img src="../images/info.svg" />
+                        </li>
+                    </ul>
+                </div>
+            </template>
+            <template class="page-4">
+                <h2>Category 5: Future Proofing</h2>
+                <div class="blue-background">
+                    <ul>
+                        <li>
+                            <section class="spending-input">
+                                <p>401K & IRA</p>
+                                <input type="text" id="-401k-and-ira-input" inputmode="numeric" value="0" />
+                            </section>
+
+                            <img src="../images/info.svg" />
+                        </li>
+                        <li>
+                            <section class="spending-input">
+
+                                <p>Investments</p>
+                                <input type="text" id="investments-input" inputmode="numeric" />
+                            </section>
+                            <img src="../images/info.svg" />
+                        </li>
+                        <li>
+                            <section class="spending-input">
+
+                                <p>Savings</p>
+                                <input type="text" id="savings-input" inputmode="numeric" />
+                            </section>
+                            <img src="../images/info.svg" />
+                        </li>
+                        <li>
+                            <section class="spending-input">
+
+                                <p>Retirement Funds</p>
+                                <input type="text" id="retirement-input" inputmode="numeric" />
+                            </section>
+                            <img src="../images/info.svg" />
+                        </li>
+                        <li>
+                            <section class="spending-input">
+                                <p>Other Expenses</p>
+                                <input type="text" id="other-expenses-input" inputmode="numeric" />
+                            </section>
+
+                            <img src="../images/info.svg" />
+                        </li>
+                    </ul>
+                </div>
+            </template>
+            <template class="page-5">
+                <section class="left"></section>
+                <section class="center">
+                    <h2>Monthly Expenses</h2>
+                    <div class="graph-container">
+                        <canvas class="graph"></canvas>
+                    </div>
+                    <p class="summary"></p>
+                    <button class="return">Return Home</button>
+                </section>
+                <section class="right"></section>
+            </template>
+        </section>
         <section id="chart-and-submit">
             <!--Idk how we're gonna put in the pie chart, assuming it's a JS thing, dunno what element tho-->
+            <div class="graph-container">
+                <canvas class="graph"></canvas>
+            </div>
             <button class="next">Continue</button>
         </section>
+    </section>
 
-        <footer>
-            <p>
-                Important note: Some expenses may not apply to you. If so, just
-                mark the expense amount to $0.
-            </p>
-        </footer>
-    </body>
+    <footer>
+        <p>
+            Important note: Some expenses may not apply to you. If so, just
+            mark the expense amount to $0.
+        </p>
+    </footer>
+</body>
+
 </html>

@@ -15,17 +15,14 @@ nav {
     text-indent: 10px;
     display: flex;
 
-    & p::before {
-        content: '';
-        background-image: url('../images/eecu-logo.png');
-        background-size: contain;
-        background-repeat: no-repeat;
-        width: 45px;
-        height: 45px;
-        display: inline-block;
-        margin-right: 10px;
-    }
 }
+
+nav img {
+    width:50px;
+    height:50px;
+    align-self:center;
+}
+
 
 body {
     margin: 0px;
@@ -41,15 +38,14 @@ body > :not(header) {
 }
 
 .heading {
-    display: flex;
+    margin:0;
+    justify-content:center;
 }
 
 #main-content {
     display: grid;
     grid-template: 1fr / 1fr 1fr;
     gap: 50px;
-
-    width: 100%;
 }
 
 /* Career Input */
@@ -153,6 +149,7 @@ li {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-left:0;
 }
 
 .next {
@@ -184,5 +181,129 @@ button.back {
         margin-top: -0.25rem;
         margin-left: 0.1rem;
         margin-right: -0.1rem;
+    }
+}
+
+@media (max-width: 600px) {
+    nav {
+        background-color: var(--primary-blue);
+        color: white;
+        padding: 2px;
+        font-size: 35px;
+        line-height: 0px;
+        text-indent: 10px;
+        display: flex;
+        justify-content:center;
+    
+    }
+
+    li {
+        list-style-type: none;
+        display: flex;
+        justify-self: center;
+        align-content: center;
+        gap: 30px;
+        & .spending-input {
+            background: #d9d9d9;
+            color: black;
+            border: none;
+            width: 350px;
+            height: 50px;
+            border-radius: 10px;
+            display: flex;
+            flex-flow: row nowrap;
+            justify-self:center;
+    
+            & p {
+                color: black;
+                margin-left: 20px;
+                line-height: 17px;
+            }
+    
+            & input {
+                margin-left: auto;
+                border-radius: 0 10px 10px 0;
+                border: 0px;
+                width: 100px;
+                text-align: center;
+            }
+        }
+    }
+
+    li img {
+        margin-left:-20px
+    }
+
+
+
+    #main-content {
+        display:flex;
+        flex-direction:column;
+    }
+
+    #career-input-section {
+        width: 440px;
+        height: 55px;
+        padding: 10px;
+        font-size: 20px;
+        color: white;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background: var(--primary-blue);
+        box-sizing: border-box;
+        display: flex;
+        flex-flow: row wrap;
+        align-content: center;
+
+        justify-content: space-around;
+        gap: 10px;
+    
+        & p {
+            margin: 10px;
+        }
+    }
+    #career-input {
+        background: var(--primary-blue);
+        color: white;
+        border: none;
+    }
+    
+    #category-education {
+        background: var(--primary-blue);
+        color: white;
+        width: 440px;
+        height: 500px;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        justify-content:center;
+
+    
+        & h2 {
+            color: white;
+            text-align: center;
+            font-feature-settings: 'liga' off, 'clig' off;
+            font-family: 'SF Pro';
+            font-size: 25px;
+            font-style: normal;
+            font-weight: 590;
+            line-height: 22px;
+            padding: 1rem;
+            background-color: var(--secondary-grey);
+        }
+    
+        & ul {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+    
+            row-gap: 20px
+        }
+    }
+
+
+    h1 {
+        display:flex;
+        justify-content:center;
     }
 }

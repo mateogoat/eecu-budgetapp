@@ -38,7 +38,8 @@ body > :not(header) {
 }
 
 .heading {
-    margin:0;
+    margin: 0px;
+    margin-left: 70px;
     justify-content:center;
 }
 
@@ -50,7 +51,7 @@ body > :not(header) {
 
 /* Career Input */
 #career-input-section {
-    width: 440px;
+    width: 600px;
     height: 55px;
     padding: 10px;
     font-size: 20px;
@@ -67,6 +68,14 @@ body > :not(header) {
 
     & p {
         margin: 10px;
+    }
+
+    & input {
+        display: none;
+    }
+
+    & label {
+        align-self: center;
     }
 }
 

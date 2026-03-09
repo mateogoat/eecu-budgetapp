@@ -32,13 +32,11 @@
         <p>Career:</p>
         <select name="career" id="career-input">
             <!--Should be a dropdown menu to search for career (API)-->
-            <option value="default"></option>
-            <option value="accountant">Accountant</option>
-            <option value="architect">Architect</option>
-            <option value="doctor">Doctor</option>
-            <option value="engineer">Engineer</option>
-            <option value="web-developer">Web Developer</option>
+            <option value="unanswered"></option>
         </select>
+        <label for="income">Income</label>
+        <input type="text" id="income">
+        <label id="salaryContainer">$<span id="salary"></span></label>
     </section>
 
     <section id="main-content">
@@ -80,6 +78,7 @@
                     </ul>
                 </div>
             </template>
+
             <template class="page-1">
                 <h2>Category 2: Housing</h2>
                 <div class="blue-background">
@@ -119,6 +118,7 @@
                     </ul>
                 </div>
             </template>
+
             <template class="page-2">
                 <h2>Category 3: Essentials</h2>
                 <div class="blue-background">
@@ -166,6 +166,7 @@
                     </ul>
                 </div>
             </template>
+
             <template class="page-3">
                 <h2>Category 4: Lifestyle</h2>
                 <div class="blue-background">
@@ -212,6 +213,7 @@
                     </ul>
                 </div>
             </template>
+
             <template class="page-4">
                 <h2>Category 5: Future Proofing</h2>
                 <div class="blue-background">
@@ -259,6 +261,7 @@
                     </ul>
                 </div>
             </template>
+
             <template class="page-5">
                 <section class="left"></section>
                 <section class="center">
@@ -271,6 +274,7 @@
                 </section>
                 <section class="right"></section>
             </template>
+            
         </section>
         <section id="chart-and-submit">
             <!--Idk how we're gonna put in the pie chart, assuming it's a JS thing, dunno what element tho-->

@@ -39,6 +39,15 @@ function navigate(page) {
     } else {
         back.style.opacity = '1';
     }
+    //This could might work, try more troubleshooting
+    
+    //Reinitialize the #element property for all Input instances
+    // categories.forEach(category => {
+    //     categories.inputs.forEach(input => {
+    //         input.element = input.element_getter(); // Access the element getter to initialize the #element property
+    //     });
+    // });
+
     console.log(current_page);
         // See if there's a current chart and destroy if there is
         current_chart?.destroy();

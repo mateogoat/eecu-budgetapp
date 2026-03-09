@@ -93,7 +93,8 @@ const education = new Category(
         spending: true
     }),
     new Input({
-        name: 'Other Expenses'
+        name: 'Other Expenses',
+        spending: true
     })
 );
 

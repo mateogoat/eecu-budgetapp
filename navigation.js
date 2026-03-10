@@ -1,11 +1,11 @@
 // import { Chart, DoughnutController } from 'https://cdn.jsdelivr.net/npm/chart.js@4.5.1/+esm';
-import { categories } from './categories.js';
+import { categories } from './categories.js';   
 
 // class doughnut extends DoughnutController {}
 // Chart.register(doughnut);
 
 const chart_container = () =>
-    /** @type {HTMLCanvasElement} */ (document.querySelector('.graph'));
+    /** @type {HTMLCanvasElement} */(document.querySelector('.graph'));
 
 let current_page = -1;
 const pages = /** @type {NodeListOf<HTMLTemplateElement>} */ (
@@ -14,6 +14,9 @@ const pages = /** @type {NodeListOf<HTMLTemplateElement>} */ (
 const view = /** @type {HTMLElement} */ (document.querySelector('.inputs'));
 const next = /** @type {HTMLButtonElement} */ (document.querySelector('.next'));
 const back = /** @type {HTMLButtonElement} */ (document.querySelector('.back'));
+
+
+
 
 next.addEventListener('click', () => {
     navigate(current_page + 1);
@@ -27,6 +30,35 @@ let current_chart;
 /**
  * @param {number} page
  */
+
+
+function updateChart() {
+    // See if there's a current chart and destroy if there is
+    current_chart?.destroy();
+    current_chart = new Chart(chart_container(), {
+        type: 'doughnut',
+        data: {
+            datasets: [
+                {
+                    label: 'Monthly Expenses',
+                    data: categories.map(category =>
+                        category.inputs
+                            .values()
+                            .map(value => value.value)
+                            .reduce((a, b) => a + b, 0)
+                    )
+                }
+            ],
+            labels: categories.map(category => category.name)
+        }
+    });
+    console.log(categories.map(category =>
+        category.inputs
+            .values()
+            .map(value => value.value)
+            .reduce((a, b) => a + b, 0)));
+}
+
 function navigate(page) {
     if (current_page === page) {
         return;
@@ -39,36 +71,26 @@ function navigate(page) {
     } else {
         back.style.opacity = '1';
     }
-    //This could might work, try more troubleshooting
+    // This could might work, try more troubleshooting
     
-    //Reinitialize the #element property for all Input instances
+    // Reinitialize the #element property for all Input instances
     // categories.forEach(category => {
-    //     categories.inputs.forEach(input => {
+    //     // Assuming category.inputs is a Map or similar iterable structure
+    //     category.inputs.forEach(input => {
     //         input.element = input.element_getter(); // Access the element getter to initialize the #element property
     //     });
     // });
 
     console.log(current_page);
-        // See if there's a current chart and destroy if there is
-        current_chart?.destroy();
-        current_chart = new Chart(chart_container(), {
-            type: 'doughnut',
-            data: {
-                datasets: [
-                    {
-                        label: 'Monthly Expenses',
-                        data: categories.map(category =>
-                            category.inputs
-                                .values()
-                                .map(value => value.value)
-                                .reduce((a, b) => a + b, 0)
-                        )
-                    }
-                ],
-                labels: categories.map(category => category.name)
-            }
-        });
-        console.log(current_chart);
+
+    // Update the chart with the new data each time there is an update
+    updateChart();
+    console.log(current_chart);
 }
 
+
 navigate(0);
+updateChart();
+
+window.updateChart = updateChart;
+

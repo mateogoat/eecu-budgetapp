@@ -171,6 +171,22 @@ li {
     padding: 20px 70px;
     border-radius: 20px;
     border: 0;
+
+    text-decoration: none;
+}
+
+.return {
+    background: var(--primary-blue);
+    color: white;
+    font-size: 35px;
+    
+
+    margin-top: 70px;
+    padding: 20px 70px;
+    border-radius: 20px;
+    border: 0;
+
+    text-decoration: none;
 }
 
 button.back {
@@ -193,6 +209,44 @@ button.back {
     }
 }
 
+.hide {
+    display: none;
+}
+
+#reshults {
+    /* typo please fix, rsoults, retults, reshults */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.finalColumn {
+    background-color: var(--primary-blue);
+    width: 33%;
+    height: 90vh;
+    padding-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.finalExpenses > section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 290px;
+    border-radius: 10px;
+    justify-content: space-between;
+    height: 32px;
+    padding: 0 10px;
+    margin-bottom: 50px;
+    background-color: #D9D9D9;
+}
+
+
+/* MEDIA QUERIES */
 @media (max-width: 600px) {
     nav {
         background-color: var(--primary-blue);

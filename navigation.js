@@ -1,5 +1,5 @@
 // import { Chart, DoughnutController } from 'https://cdn.jsdelivr.net/npm/chart.js@4.5.1/+esm';
-import { categories } from './categories.js';   
+import { categories } from './categories.js';
 
 // class doughnut extends DoughnutController {}
 // Chart.register(doughnut);
@@ -44,8 +44,8 @@ function updateChart() {
                     data: categories.map(category =>
                         category.inputs
                             .values()
-                            .map(value => value.value)
-                            .reduce((a, b) => a + b, 0)
+                            .map(value => value.value) // maps stuff
+                            .reduce((a, b) => a + b, 0) // sums stuff
                     )
                 }
             ],
@@ -59,33 +59,34 @@ function updateChart() {
             .reduce((a, b) => a + b, 0)));
 }
 
+// Page navigation
 function navigate(page) {
     if (current_page === page) {
         return;
     }
-    view.replaceChildren(
-        ...pages.item((current_page = page)).content.cloneNode(true).childNodes
-    );
+
+    // if statement prevents from going too far forward or backward in the pages
+    if ((page >= 0) && (page < 6)) {
+        if (page == 6) {
+
+        }
+        view.replaceChildren(
+            ...pages.item((current_page = page)).content.cloneNode(true).childNodes
+        );
+
     if (current_page === 0) {
         back.style.opacity = '0';
     } else {
         back.style.opacity = '1';
     }
-    // This could might work, try more troubleshooting
-    
-    // Reinitialize the #element property for all Input instances
-    // categories.forEach(category => {
-    //     // Assuming category.inputs is a Map or similar iterable structure
-    //     category.inputs.forEach(input => {
-    //         input.element = input.element_getter(); // Access the element getter to initialize the #element property
-    //     });
-    // });
 
     console.log(current_page);
-
     // Update the chart with the new data each time there is an update
     updateChart();
     console.log(current_chart);
+
+    }
+    console.log(current_page);
 }
 
 

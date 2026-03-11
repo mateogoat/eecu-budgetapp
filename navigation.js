@@ -41,12 +41,14 @@ function updateChart() {
             datasets: [
                 {
                     label: 'Monthly Expenses',
-                    data: categories.map(category =>
-                        category.inputs
+                    data: categories.map(category => {
+                        const values = category.inputs
                             .values()
-                            .map(value => value.value) // maps stuff
-                            .reduce((a, b) => a + b, 0) // sums stuff
-                    )
+                            .map(value => value.value); 
+                        console.log(`Category: ${category.name}, Values:`, values); 
+
+                        return values.reduce((a, b) => a + b, 0);
+                    })
                 }
             ],
             labels: categories.map(category => category.name)
@@ -56,7 +58,8 @@ function updateChart() {
         category.inputs
             .values()
             .map(value => value.value)
-            .reduce((a, b) => a + b, 0)));
+            .reduce((a, b) => a + b, 0)
+    ));
 }
 
 // Page navigation
@@ -74,16 +77,16 @@ function navigate(page) {
             ...pages.item((current_page = page)).content.cloneNode(true).childNodes
         );
 
-    if (current_page === 0) {
-        back.style.opacity = '0';
-    } else {
-        back.style.opacity = '1';
-    }
+        if (current_page === 0) {
+            back.style.opacity = '0';
+        } else {
+            back.style.opacity = '1';
+        }
 
-    console.log(current_page);
-    // Update the chart with the new data each time there is an update
-    updateChart();
-    console.log(current_chart);
+        console.log(current_page);
+        // Update the chart with the new data each time there is an update
+        updateChart();
+        console.log(current_chart);
 
     }
     console.log(current_page);

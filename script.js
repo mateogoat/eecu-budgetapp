@@ -1,9 +1,10 @@
+const chart_container = () =>
+    /** @type {HTMLCanvasElement} */(document.querySelector('.graph'));
 import './navigation.js';
-import { categories } from './categories.js';
 
 const salary = document.getElementById('salary');
 
-//Career Select
+// Career Select
 async function careerSelector() {
     const selectCareer = document.getElementById('career-input');
     const careerSalaryMap = new Map();

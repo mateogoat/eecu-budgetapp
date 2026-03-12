@@ -14,7 +14,7 @@ nav {
     line-height: 0px;
     text-indent: 10px;
     display: flex;
-    justify-content:flex-start;
+    justify-content: flex-start;
 
     & img {
         margin-left: 70px;
@@ -23,14 +23,15 @@ nav {
 }
 
 nav img {
-    width:50px;
-    height:50px;
-    align-self:center;
+    width: 50px;
+    height: 50px;
+    align-self: center;
 }
 
 
 body {
     margin: 0px;
+
     & * {
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
             Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
@@ -38,14 +39,14 @@ body {
     }
 }
 
-body > :not(header) {
+body> :not(header) {
     margin: 70px;
 }
 
 .heading {
     margin: 0px;
     margin-left: 70px;
-    justify-content:center;
+    justify-content: center;
 }
 
 #main-content {
@@ -97,8 +98,8 @@ body > :not(header) {
     height: 500px;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
-    display:flex;
-    flex-direction:column;
+    display: flex;
+    flex-direction: column;
 
     & h2 {
         color: white;
@@ -111,7 +112,7 @@ body > :not(header) {
         line-height: 22px;
         padding: 1rem;
         background-color: var(--secondary-grey);
-        margin-top:0;
+        margin-top: 0;
     }
 
     & ul {
@@ -119,8 +120,8 @@ body > :not(header) {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        align-content:center;
-        align-self:center;
+        align-content: center;
+        align-self: center;
 
         row-gap: 20px
     }
@@ -132,6 +133,7 @@ li {
     justify-self: center;
     align-content: center;
     gap: 30px;
+
     & .spending-input {
         background: #d9d9d9;
         color: black;
@@ -168,14 +170,14 @@ li {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-left:0;
+    margin-left: 0;
 }
 
 .next {
     background: var(--primary-blue);
     color: white;
     font-size: 35px;
-    
+
 
     margin-top: 70px;
     padding: 20px 70px;
@@ -189,8 +191,8 @@ li {
     background: var(--primary-blue);
     color: white;
     font-size: 35px;
-    
 
+    justify-self: center;
     margin-top: 70px;
     padding: 20px 70px;
     border-radius: 20px;
@@ -211,6 +213,7 @@ button.back {
     text-align: center;
     display: flex;
     place-content: center;
+
     & b {
         margin-bottom: 0.25rem;
         margin-top: -0.25rem;
@@ -228,31 +231,34 @@ button.back {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100vw;
-    height: 100vh;
 }
 
 .finalColumn {
     background-color: var(--primary-blue);
-    width: 33%;
-    height: 90vh;
-    padding-top: 50px;
+    width: 323px;
+    height: 827px;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 15px;
 }
 
-.finalExpenses > section {
+.finalExpenses>section {
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 290px;
+    width: 289px;
+    height: 32px; 
     border-radius: 10px;
     justify-content: space-between;
     height: 32px;
     padding: 0 10px;
-    margin-bottom: 50px;
     background-color: #D9D9D9;
+    position: relative;
+}
+
+#final-spending {
+    margin-top: 45px;
+    margin-bottom: 45px;
 }
 
 
@@ -266,17 +272,17 @@ button.back {
         line-height: 0px;
         text-indent: 10px;
         display: flex;
-        justify-content:center;
+        justify-content: center;
 
         & img {
             margin-left: 0px;
         }
-    
+
     }
 
     h1 {
-        margin-left:0;
-        margin-right:0;
+        margin-left: 0;
+        margin-right: 0;
         justify-content: center;
     }
 
@@ -286,6 +292,7 @@ button.back {
         justify-self: center;
         align-content: center;
         gap: 30px;
+
         & .spending-input {
             background: #d9d9d9;
             color: black;
@@ -295,14 +302,14 @@ button.back {
             border-radius: 10px;
             display: flex;
             flex-flow: row nowrap;
-            justify-self:center;
-    
+            justify-self: center;
+
             & p {
                 color: black;
                 margin-left: 20px;
                 line-height: 17px;
             }
-    
+
             & input {
                 margin-left: auto;
                 border-radius: 0 10px 10px 0;
@@ -314,18 +321,18 @@ button.back {
     }
 
     li img {
-        margin-left:-20px
+        margin-left: -20px
     }
 
 
 
     #main-content {
-        display:flex;
-        flex-direction:column;
+        display: flex;
+        flex-direction: column;
     }
 
     #career-input-section {
-        width:500px;
+        width: 500px;
         height: 55px;
         padding: 10px;
         font-size: 20px;
@@ -340,17 +347,18 @@ button.back {
 
         justify-content: space-around;
         gap: 10px;
-    
+
         & p {
             margin: 10px;
         }
     }
+
     #career-input {
         background: var(--primary-blue);
         color: white;
         border: none;
     }
-    
+
     #category-education {
         background: var(--primary-blue);
         color: white;
@@ -358,13 +366,13 @@ button.back {
         height: 500px;
         border-bottom-left-radius: 20px;
         border-bottom-right-radius: 20px;
-        justify-content:center;
+        justify-content: center;
 
-    
+
         & h2 {
-            display:flex;
-            justify-content:center;
-            margin-top:0em;
+            display: flex;
+            justify-content: center;
+            margin-top: 0em;
             color: white;
             text-align: center;
             font-feature-settings: 'liga' off, 'clig' off;
@@ -376,20 +384,20 @@ button.back {
             padding: 1rem;
             background-color: var(--secondary-grey);
         }
-    
+
         & ul {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-    
+
             row-gap: 20px
         }
     }
 
 
     h1 {
-        display:flex;
-        justify-content:center;
+        display: flex;
+        justify-content: center;
     }
 }

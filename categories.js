@@ -44,13 +44,14 @@ class Input {
         }
     }
     name;
-    get element() {
-        return this.#element;
-    }
-    #element;
     #element_getter;
+    #cachedValue = 0;
     get value() {
-        return +this.element?.value;
+        const el = this.#element_getter();
+        if (el) {
+            this.#cachedValue = +el.value;
+        }
+        return this.#cachedValue;
     }
     /**
      * @param {{ name: string; spending?: boolean; earning?: boolean; }} config
@@ -67,14 +68,6 @@ class Input {
             document.querySelector(
                 '#' + name.toLowerCase().replace(/^[0-9]/, m => `x-${m}`).replace(/'s/g, '').replace(/ /g, '-').replace(/&/g, 'and') + '-input'
             );
-
-        const observer = new MutationObserver(() => {
-            this.#element ??= this.#element_getter();
-        });
-        observer.observe(document.body, {
-            childList: true,
-            subtree: true
-        });
     }
 }
 

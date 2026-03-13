@@ -12,7 +12,8 @@ const pages = /** @type {NodeListOf<HTMLTemplateElement>} */ (
     document.querySelectorAll('template[class^="page-"]')
 );
 const view = /** @type {HTMLElement} */ (document.querySelector('.inputs'));
-const next = /** @type {HTMLButtonElement} */ (document.querySelector('.next'));
+const next = /** @type {HTMLButtonElement} */ (document.querySelector('button.next'));
+const results = /** @type {HTMLAnchorElement} */ (document.querySelector('a.next[href="results.html"]'));
 const back = /** @type {HTMLButtonElement} */ (document.querySelector('.back'));
 
 
@@ -44,8 +45,8 @@ function updateChart() {
                     data: categories.map(category => {
                         const values = category.inputs
                             .values()
-                            .map(value => value.value); 
-                        console.log(`Category: ${category.name}, Values:`, values); 
+                            .map(value => value.value);
+                        console.log(`Category: ${category.name}, Values:`, values);
 
                         return values.reduce((a, b) => a + b, 0);
                     })
@@ -60,6 +61,25 @@ function updateChart() {
             .map(value => value.value)
             .reduce((a, b) => a + b, 0)
     ));
+}
+
+function restoreInputsFromStorage() {
+    categories.forEach(category => {
+        category.inputs
+            .values()
+            .forEach(input => input.syncElementFromStorage());
+    });
+}
+
+function updateNavigationButtons() {
+    // Show Continue only before page 4. Show Results at page 4 and after.
+    if (current_page < 4) {
+        next.classList.remove('hide');
+        results.classList.add('hide');
+    } else {
+        next.classList.add('hide');
+        results.classList.remove('hide');
+    }
 }
 
 // Page navigation
@@ -77,11 +97,16 @@ function navigate(page) {
             ...pages.item((current_page = page)).content.cloneNode(true).childNodes
         );
 
+        restoreInputsFromStorage();
+        updateNavigationButtons();
+
         if (current_page === 0) {
             back.style.opacity = '0';
         } else {
             back.style.opacity = '1';
         }
+
+
 
         console.log(current_page);
         // Update the chart with the new data each time there is an update

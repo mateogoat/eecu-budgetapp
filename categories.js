@@ -12,6 +12,7 @@ class Category {
     constructor(name, ...inputs) {
         this.name = name;
         for (const input of inputs) {
+            input.setCategory(name);
             this.inputs.set(input.name, input);
         }
     }
@@ -45,11 +46,63 @@ class Input {
     }
     name;
     #element_getter;
+    #storageKey = '';
     #cachedValue = 0;
+
+    static storagePrefix = 'eecu-budget:';
+
+    static #normalizeToken(value) {
+        return value
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-+|-+$/g, '');
+    }
+
+    static #asNumber(value) {
+        const parsed = Number(value);
+        return Number.isFinite(parsed) ? parsed : 0;
+    }
+
+    #saveToStorage(value) {
+        if (!this.#storageKey) {
+            return;
+        }
+        localStorage.setItem(this.#storageKey, String(value));
+    }
+
+    #readFromStorage() {
+        if (!this.#storageKey) {
+            return 0;
+        }
+        return Input.#asNumber(localStorage.getItem(this.#storageKey));
+    }
+
+    setCategory(categoryName) {
+        this.#storageKey =
+            Input.storagePrefix +
+            Input.#normalizeToken(categoryName) +
+            ':' +
+            Input.#normalizeToken(this.name);
+        this.#cachedValue = this.#readFromStorage();
+    }
+
+    syncElementFromStorage() {
+        const el = this.#element_getter();
+        if (!el) {
+            return;
+        }
+        const storedValue = this.#readFromStorage();
+        this.#cachedValue = storedValue;
+        el.value = String(storedValue);
+    }
+
     get value() {
         const el = this.#element_getter();
         if (el) {
-            this.#cachedValue = +el.value;
+            this.#cachedValue = Input.#asNumber(el.value);
+            this.#saveToStorage(this.#cachedValue);
+        } else {
+            this.#cachedValue = this.#readFromStorage();
         }
         return this.#cachedValue;
     }

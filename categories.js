@@ -106,6 +106,7 @@ class Input {
         }
         return this.#cachedValue;
     }
+
     /**
      * @param {{ name: string; spending?: boolean; earning?: boolean; }} config
      */

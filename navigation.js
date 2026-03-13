@@ -17,8 +17,6 @@ const results = /** @type {HTMLAnchorElement} */ (document.querySelector('a.next
 const back = /** @type {HTMLButtonElement} */ (document.querySelector('.back'));
 
 
-
-
 next.addEventListener('click', () => {
     navigate(current_page + 1);
 });
@@ -34,6 +32,12 @@ let current_chart;
 
 
 function updateChart() {
+    categories.forEach(category => {
+        category.inputs.forEach(input => {
+            const value = input.value; // Get the current value of the input
+            localStorage.setItem(input.name, value); // Save to localStorage
+        });
+    });
     // See if there's a current chart and destroy if there is
     current_chart?.destroy();
     current_chart = new Chart(chart_container(), {

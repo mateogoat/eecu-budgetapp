@@ -57,7 +57,7 @@ body> :not(header) {
 
 /* Career Input */
 #career-input-section {
-    width: 600px;
+    width: 650px;
     height: 55px;
     padding: 10px;
     font-size: 20px;
@@ -403,9 +403,19 @@ button.back {
         flex-direction: column;
     }
 
+    #tax-input-section {
+        width:400px;
+        justify-self:center;
+    }
+
+    #net-income-section {
+        width:400px;
+        justify-self:center;
+    }
+
     #career-input-section {
-        width: 500px;
-        height: 55px;
+        width: 440px;
+        height: 60px;
         padding: 10px;
         font-size: 20px;
         color: white;
@@ -414,7 +424,7 @@ button.back {
         background: var(--primary-blue);
         box-sizing: border-box;
         display: flex;
-        flex-flow: row wrap;
+        flex-direction: column;
         align-content: center;
 
         justify-content: space-around;
@@ -424,6 +434,7 @@ button.back {
             margin: 10px;
         }
     }
+
 
     #career-input {
         background: var(--primary-blue);
@@ -439,12 +450,12 @@ button.back {
         border-bottom-left-radius: 20px;
         border-bottom-right-radius: 20px;
         justify-content: center;
+        margin-bottom:300px;
 
 
         & h2 {
-            display: flex;
             justify-content: center;
-            margin-top: 0em;
+            margin-top:-133px;
             color: white;
             text-align: center;
             font-feature-settings: 'liga' off, 'clig' off;
@@ -465,11 +476,31 @@ button.back {
 
             row-gap: 20px
         }
+
+        & li {
+           margin-left:-35px;
+        }
     }
 
 
     h1 {
         display: flex;
-        justify-content: center;
+        justify-self: center;
+    }
+
+    .heading {
+        margin:0;
+    }
+
+    .finalColumn {
+        display:none;
+    }
+
+    .finalExpenses {
+        display:none;
+    }
+
+    .finalGraph {
+        margin-left:-150px;
     }
 }

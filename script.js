@@ -1,10 +1,12 @@
 const chart_container = () =>
     /** @type {HTMLCanvasElement} */(document.querySelector('.graph'));
 import './navigation.js';
-
+import { categories } from './categories.js';
 const taxIncome = document.getElementById('taxIncome');
 const salary = document.getElementById('salary');
 const TAX_STORAGE_KEY = 'eecu-budget:tax';
+
+
 
 
 // Career Select
@@ -74,10 +76,25 @@ function updateTaxes () {
 
     if (typeof window.updateChart === 'function') {
         window.updateChart();
-    }
+    } return monthlyTaxValue;
 }
 
+/*
 
+function netIncomeCalc () {
+    let sum = 0;
+    let taxes = updateTaxes();
+    const netIncomeElement = document.getElementById('netIncome');
+    categories.forEach(category => {
+        category.inputs.forEach(input => {
+            const value = input.value; // Get the current value of the input
+            totalMonthlySpending += value;
+        });
+        console.log(sum,taxes);
+})}
+
+netIncomeCalc();
+*/
 const salaryObserver = new MutationObserver (() => {
     updateTaxes();
 });

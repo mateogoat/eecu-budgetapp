@@ -3,26 +3,32 @@ import { categories } from './categories.js';
 
 const chart_container = () =>
     /** @type {HTMLCanvasElement} */(document.querySelector('.graph'));
+const TAX_STORAGE_KEY = 'eecu-budget:tax';
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Select all input fields with the class "spending-input"
-    const inputs = document.querySelectorAll('input[type="text"]');
-
-    // Populate inputs with values from localStorage
-    inputs.forEach(input => {
-        const storedValue = localStorage.getItem(input.id); // Retrieve value from localStorage
-        if (storedValue !== null) {
-            input.value = storedValue; // Set the input value
-        }
-
-        // Add an event listener to update localStorage on change
-        input.addEventListener('change', () => {
-            localStorage.setItem(input.id, input.value); // Update localStorage
-        });
-    });
+    restoreInputsFromStorage();
+    attachInputListeners();
+    updateChart();
 });
 
 let current_chart;
+
+function restoreInputsFromStorage() {
+    categories.forEach(category => {
+        category.inputs
+            .values()
+            .forEach(input => input.syncElementFromStorage());
+    });
+}
+
+function attachInputListeners() {
+    const inputs = document.querySelectorAll('input[type="text"]');
+    inputs.forEach(input => {
+        input.addEventListener('change', () => {
+            updateChart();
+        });
+    });
+}
 
 function updateChart() {
 
@@ -32,6 +38,15 @@ function updateChart() {
             localStorage.setItem(input.name, value); // Save to localStorage
         });
     });
+
+    const categoryTotals = categories.map(category => {
+        const values = category.inputs
+            .values()
+            .map(value => value.value);
+        return values.reduce((a, b) => a + b, 0);
+    });
+    const taxValue = Number(localStorage.getItem(TAX_STORAGE_KEY)) || 0;
+
     // See if there's a current chart and destroy if there is
     current_chart?.destroy();
     current_chart = new Chart(chart_container(), {
@@ -40,28 +55,13 @@ function updateChart() {
             datasets: [
                 {
                     label: 'Monthly Expenses',
-                    data: categories.map(category => {
-                        const values = category.inputs
-                            .values()
-                            .map(value => value.value); 
-                        console.log(`Category: ${category.name}, Values:`, values); 
-
-                        return values.reduce((a, b) => a + b, 0);
-                    })
+                    data: [...categoryTotals, taxValue]
                 }
             ],
-            labels: categories.map(category => category.name)
+            labels: [...categories.map(category => category.name), 'Taxes']
         }
     });
-    console.log(categories.map(category =>
-        category.inputs
-            .values()
-            .map(value => value.value)
-            .reduce((a, b) => a + b, 0)
-    ));
 }
-
-updateChart();
 
 window.updateChart = updateChart;
 

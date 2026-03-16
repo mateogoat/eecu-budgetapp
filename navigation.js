@@ -16,7 +16,6 @@ const next = /** @type {HTMLButtonElement} */ (document.querySelector('button.ne
 const results = /** @type {HTMLAnchorElement} */ (document.querySelector('a.next[href="results.html"]'));
 const back = /** @type {HTMLButtonElement} */ (document.querySelector('.back'));
 
-
 next.addEventListener('click', () => {
     navigate(current_page + 1);
 });
@@ -38,6 +37,15 @@ function updateChart() {
             localStorage.setItem(input.name, value); // Save to localStorage
         });
     });
+
+    const categoryTotals = categories.map(category => {
+        const values = category.inputs
+            .values()
+            .map(value => value.value);
+        return values.reduce((a, b) => a + b, 0);
+    });
+    const taxValue = Number(localStorage.getItem('eecu-budget:tax')) || 0;
+
     // See if there's a current chart and destroy if there is
     current_chart?.destroy();
     current_chart = new Chart(chart_container(), {
@@ -46,25 +54,12 @@ function updateChart() {
             datasets: [
                 {
                     label: 'Monthly Expenses',
-                    data: categories.map(category => {
-                        const values = category.inputs
-                            .values()
-                            .map(value => value.value);
-                        console.log(`Category: ${category.name}, Values:`, values);
-
-                        return values.reduce((a, b) => a + b, 0);
-                    })
+                    data: [...categoryTotals, taxValue]
                 }
             ],
-            labels: categories.map(category => category.name)
+            labels: [...categories.map(category => category.name), 'Taxes']
         }
     });
-    console.log(categories.map(category =>
-        category.inputs
-            .values()
-            .map(value => value.value)
-            .reduce((a, b) => a + b, 0)
-    ));
 }
 
 function restoreInputsFromStorage() {
@@ -110,8 +105,6 @@ function navigate(page) {
             back.style.opacity = '1';
         }
 
-
-
         console.log(current_page);
         // Update the chart with the new data each time there is an update
         updateChart();
@@ -120,7 +113,6 @@ function navigate(page) {
     }
     console.log(current_page);
 }
-
 
 navigate(0);
 updateChart();

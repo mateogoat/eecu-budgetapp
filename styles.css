@@ -40,7 +40,7 @@ body {
 }
 
 body> :not(header) {
-    margin: 70px;
+    margin:70px;
 }
 
 .heading {
@@ -89,6 +89,50 @@ body> :not(header) {
     background: var(--primary-blue);
     color: white;
     border: none;
+}
+
+#tax-input-section {
+    width: 600px;
+    height: 55px;
+    padding: 10px;
+    font-size: 20px;
+    color: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: var(--primary-blue);
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: row wrap;
+    align-content: center;
+    justify-content:center;
+    gap: 10px;
+
+    & p {
+        margin: 0px;
+        margin-right:10px;
+    }
+}
+
+#net-income-section {
+    width: 600px;
+    height: 55px;
+    padding: 10px;
+    font-size: 20px;
+    color: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: var(--primary-blue);
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: row wrap;
+    align-content: center;
+    justify-content:center;
+    gap: 10px;
+
+    & p {
+        margin: 0px;
+        margin-right:10px;
+    }
 }
 
 #category-education {
@@ -171,6 +215,7 @@ li {
     justify-content: center;
     align-items: center;
     margin-left: 0;
+    margin-top:-15em;
 }
 
 .next {
@@ -246,11 +291,12 @@ button.back {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    margin:200px;
 }
 
 .finalColumn {
     background-color: var(--primary-blue);
-    width: 323px;
+    width: 375px;
     height: 827px;
     display: flex;
     align-items: center;
@@ -258,11 +304,22 @@ button.back {
     border-radius: 15px;
 }
 
+.finalExpenses {
+    display: flex;
+    flex-direction: column;
+    gap:55px;
+}
+
+.graph-container {
+    width: 500px;
+    height: 500px;
+}
+
+
 .finalExpenses>section {
     display: flex;
     align-items: center;
-    width: 290px;
-    height: 32px;
+    width: 300px;
     border-radius: 10px;
     justify-content: space-between;
     height: 35px;
@@ -272,8 +329,9 @@ button.back {
 }
 
 .final-spending {
-    margin-top: 58px;
-    margin-bottom: 58px;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
 }
 
 /* MEDIA QUERIES */

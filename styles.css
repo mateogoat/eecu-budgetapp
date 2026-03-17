@@ -22,6 +22,40 @@ nav {
 
 }
 
+#remaining-income-section {
+    width: 600px;
+    height: 55px;
+    padding: 10px;
+    font-size: 20px;
+    color: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: var(--primary-blue);
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: row wrap;
+    align-content: center;
+    justify-content: center;
+    gap: 10px;
+
+    & p {
+        margin: 0px;
+        margin-right: 10px;
+    }
+}
+
+.negative {
+    color: #ff4d4f !important;
+}
+
+.barelyPositive {
+    color: #ffd166 !important;
+}
+
+.positive {
+    color: #2ecc71 !important;
+}
+
 nav img {
     width: 50px;
     height: 50px;
@@ -40,7 +74,7 @@ body {
 }
 
 body> :not(header) {
-    margin:70px;
+    margin: 70px;
 }
 
 .heading {
@@ -57,7 +91,7 @@ body> :not(header) {
 
 /* Career Input */
 #career-input-section {
-    width: 650px;
+    width: 600px;
     height: 55px;
     padding: 10px;
     font-size: 20px;
@@ -82,6 +116,7 @@ body> :not(header) {
 
     & label {
         align-self: center;
+        font-size: 19px;
     }
 }
 
@@ -104,12 +139,12 @@ body> :not(header) {
     display: flex;
     flex-flow: row wrap;
     align-content: center;
-    justify-content:center;
+    justify-content: center;
     gap: 10px;
 
     & p {
         margin: 0px;
-        margin-right:10px;
+        margin-right: 10px;
     }
 }
 
@@ -126,12 +161,12 @@ body> :not(header) {
     display: flex;
     flex-flow: row wrap;
     align-content: center;
-    justify-content:center;
+    justify-content: center;
     gap: 10px;
 
     & p {
         margin: 0px;
-        margin-right:10px;
+        margin-right: 10px;
     }
 }
 
@@ -215,7 +250,7 @@ li {
     justify-content: center;
     align-items: center;
     margin-left: 0;
-    margin-top:-15em;
+    margin-top: -15em;
 }
 
 .next {
@@ -230,6 +265,13 @@ li {
     border: 0;
 
     text-decoration: none;
+}
+
+#career-selection {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
 }
 
 .continue {
@@ -254,10 +296,10 @@ li {
     display: flex;
     justify-content: center;
     margin-top: 70px;
-    margin-left: 25px;
-    margin-right: 25px;
-    padding: 30px 10px;
+    margin-left: 100px;
+    margin-right: 100px;
     border-radius: 20px;
+    padding: 10px;
     text-decoration: none;
 }
 
@@ -268,6 +310,7 @@ button.back {
     font-size: 1.8rem;
     font-weight: bold;
     font-family: sans-serif;
+    margin-top:30px;
     border: 2px solid black;
     background: white;
     text-align: center;
@@ -291,7 +334,7 @@ button.back {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    margin:200px;
+    margin: 200px;
 }
 
 .finalColumn {
@@ -307,7 +350,7 @@ button.back {
 .finalExpenses {
     display: flex;
     flex-direction: column;
-    gap:55px;
+    gap: 55px;
 }
 
 .graph-container {
@@ -404,18 +447,20 @@ button.back {
     }
 
     #tax-input-section {
-        width:400px;
-        justify-self:center;
+        width: 440px;
+        justify-self: center;
     }
 
     #net-income-section {
-        width:400px;
-        justify-self:center;
+        width: 440px;
+        justify-self: center;
     }
 
     #career-input-section {
         width: 440px;
-        height: 60px;
+        height: auto;
+        min-height: 60px;
+        margin-left:80px;
         padding: 10px;
         font-size: 20px;
         color: white;
@@ -426,12 +471,11 @@ button.back {
         display: flex;
         flex-direction: column;
         align-content: center;
-
-        justify-content: space-around;
+        justify-content: center;
         gap: 10px;
 
         & p {
-            margin: 10px;
+            margin: 0;
         }
     }
 
@@ -440,6 +484,7 @@ button.back {
         background: var(--primary-blue);
         color: white;
         border: none;
+        font-size: 15px;
     }
 
     #category-education {
@@ -450,12 +495,13 @@ button.back {
         border-bottom-left-radius: 20px;
         border-bottom-right-radius: 20px;
         justify-content: center;
-        margin-bottom:300px;
+        margin-bottom: 300px;
+        margin-left: 10px;
 
 
         & h2 {
             justify-content: center;
-            margin-top:-133px;
+            margin-top: -133px;
             color: white;
             text-align: center;
             font-feature-settings: 'liga' off, 'clig' off;
@@ -478,7 +524,7 @@ button.back {
         }
 
         & li {
-           margin-left:-35px;
+            margin-left: -35px;
         }
     }
 
@@ -489,18 +535,77 @@ button.back {
     }
 
     .heading {
-        margin:0;
+        margin: 0;
     }
 
     .finalColumn {
-        display:none;
+        display: none;
     }
 
     .finalExpenses {
-        display:none;
+        display: none;
     }
 
     .finalGraph {
-        margin-left:-150px;
+        margin-left: -150px;
+    }
+
+    #career-selection {
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-areas:
+            "career-label career-select"
+            "income-label income-value";
+        justify-content: center;
+        align-items: center;
+        row-gap: 8px;
+        gap: 10px;
+    }
+
+    #career-selection>p {
+        grid-area: career-label;
+    }
+
+    #career-selection>select {
+        grid-area: career-select;
+    }
+
+    #career-selection>label[for="income"] {
+        grid-area: income-label;
+        justify-self: end;
+        margin: 0;
+    }
+
+    #career-selection>#salaryContainer {
+        grid-area: income-value;
+        justify-self: start;
+    }
+
+    #remaining-income-section {
+        width: 440px;
+        justify-self: center;
+    }
+}
+
+button.back {
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.8rem;
+    font-weight: bold;
+    font-family: sans-serif;
+    margin-top:30px;
+    margin-left:30px;
+    border: 2px solid black;
+    background: white;
+    text-align: center;
+    display: flex;
+    place-content: center;
+
+    & b {
+        margin-bottom: 0.25rem;
+        margin-top: -0.25rem;
+        margin-left: 0.1rem;
+        margin-right: -0.1rem;
     }
 }

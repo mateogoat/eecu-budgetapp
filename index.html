@@ -30,14 +30,17 @@
 
 
     <section id="career-input-section">
-        <p>Career:</p>
-        <select name="career" id="career-input">
-            <!--Should be a dropdown menu to search for career (API)-->
-            <option value="unanswered"></option>
-        </select>
+        <section id="career-selection">
+            <p>Career:</p>
+            <select name="career" id="career-input">
+                <!--Should be a dropdown menu to search for career (API)-->
+                <option value="unanswered"></option>
+            </select>
+        
         <label for="income">Yearly Gross Income:</label>
         <input type="text" id="income">
         <label id="salaryContainer">$<span id="salary"></span></label>
+    </section>
     </section>
     <section id="tax-input-section">
         <p>Yearly Tax Deduction:</p>
@@ -48,6 +51,12 @@
         <p>Yearly Net Income</p>
         <label id="netIncomeContainer">$<span id="netIncome"></span></label>
     </section>
+
+    <section id="remaining-income-section">
+        <p>Remaining Balance</p>
+        <label id="remainingIncomeContainer"><span id="remainingIncome">$0.00</span></label>
+    </section>
+
     <section id="main-content" class="hide">
         <section id="category-education" class="inputs">
 

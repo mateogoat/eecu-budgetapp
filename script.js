@@ -5,6 +5,7 @@ import { categories } from './categories.js';
 const taxIncome = document.getElementById('taxIncome');
 const salary = document.getElementById('salary');
 const TAX_STORAGE_KEY = 'eecu-budget:tax';
+const MONTHLY_NET_STORAGE_KEY = 'eecu-budget:monthly-net';
 
 
 
@@ -64,15 +65,18 @@ function taxCalculator(income_in) {
 function updateTaxes () {
     const income = parseFloat(salary.textContent) || 0;
     const yearlyTaxValue = taxCalculator(income);
+    const yearlyNetIncome = income - yearlyTaxValue;
     const monthlyTaxValue = yearlyTaxValue / 12;
+    const monthlyNetIncome = yearlyNetIncome / 12;
     if (taxIncome) {
         taxIncome.textContent = yearlyTaxValue.toFixed(2);
     }
     const netIncomeElement = document.getElementById('netIncome');
     if (netIncomeElement) {
-        netIncomeElement.textContent = (income - yearlyTaxValue).toFixed(2);
+        netIncomeElement.textContent = yearlyNetIncome.toFixed(2);
     }
     localStorage.setItem(TAX_STORAGE_KEY, String(monthlyTaxValue));
+    localStorage.setItem(MONTHLY_NET_STORAGE_KEY, String(monthlyNetIncome));
 
     if (typeof window.updateChart === 'function') {
         window.updateChart();

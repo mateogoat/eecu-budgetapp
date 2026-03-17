@@ -585,17 +585,17 @@ button.back {
         width: 440px;
         justify-self: center;
     }
-}
 
-button.back {
+    button.back {
     border-radius: 50%;
     width: 2.5rem;
     height: 2.5rem;
     font-size: 1.8rem;
     font-weight: bold;
-    font-family: sans-serif;
     margin-top:30px;
     margin-left:30px;
+    font-family: sans-serif;
+    margin-top:30px;
     border: 2px solid black;
     background: white;
     text-align: center;
@@ -608,4 +608,5 @@ button.back {
         margin-left: 0.1rem;
         margin-right: -0.1rem;
     }
+}
 }

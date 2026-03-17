@@ -8,8 +8,6 @@ const TAX_STORAGE_KEY = 'eecu-budget:tax';
 const MONTHLY_NET_STORAGE_KEY = 'eecu-budget:monthly-net';
 
 
-
-
 // Career Select
 async function careerSelector() {
     const selectCareer = document.getElementById('career-input');

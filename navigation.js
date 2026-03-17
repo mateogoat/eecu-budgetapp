@@ -14,7 +14,9 @@ const pages = /** @type {NodeListOf<HTMLTemplateElement>} */ (
 );
 const view = /** @type {HTMLElement} */ (document.querySelector('.inputs'));
 const next = /** @type {HTMLButtonElement} */ (document.querySelector('button.next'));
-const results = /** @type {HTMLAnchorElement} */ (document.querySelector('a.next[href="results.html"]'));
+const results = /** @type {HTMLAnchorElement} */ (
+    document.querySelector('#results-button') || document.querySelector('a.next[href$="results.html"]')
+);
 const back = /** @type {HTMLButtonElement} */ (document.querySelector('.back'));
 
 next?.addEventListener('click', () => {
@@ -104,16 +106,12 @@ function restoreInputsFromStorage() {
 
 function updateNavigationButtons() {
     // Show Continue only before page 4. Show Results at page 4 and after.
-    if (!next || !results) {
-        return;
-    }
-
     if (current_page < 4) {
-        next.classList.remove('hide');
-        results.classList.add('hide');
+        next?.classList.remove('hide');
+        results?.classList.add('hide');
     } else {
-        next.classList.add('hide');
-        results.classList.remove('hide');
+        next?.classList.add('hide');
+        results?.classList.remove('hide');
     }
 }
 
